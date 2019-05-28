@@ -5,14 +5,18 @@
 
 
 
-function makeGrid() {
+function setGrid(e) {
+    e.preventDefault()
+    var canvas = document.getElementById('pixelCanvas')
     var height = Number(document.getElementById('inputHeight').value)
     var width = Number(document.getElementById('inputWidth').value)
+    while (canvas.firstChild) {
+        canvas.removeChild(canvas.firstChild)
+    }
     for (var row = 0; row < height; row++) {
         var newTr = document.createElement('tr')
         idNameTr = 'tr'.concat(row)
         newTr.setAttribute('id', idNameTr)
-        var canvas = document.getElementById('pixelCanvas')
         canvas.appendChild(newTr)
         for (var col = 0; col < width; col++) {
             var newTd = document.createElement('td')
@@ -24,7 +28,7 @@ function makeGrid() {
     }
 }
 
-document.getElementById('submitButton').addEventListener('click', makeGrid, false);
+document.getElementById('submitButton').addEventListener('click', setGrid, false);
 
 
 /* 
