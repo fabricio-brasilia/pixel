@@ -28,24 +28,21 @@ function setGrid(e) {
     }
 }
 
-document.getElementById('submitButton').addEventListener('click', setGrid, false);
-
-
-/* 
-
-function makeGrid() {
-    var height = Number(document.getElementById('inputHeight').value)
-    var width = Number(document.getElementById('inputWidth').value)
-    var canvas = document.getElementById('pixelCanvas')
-    for (var row = 0; row < height; row++) {
-        var newTr = canvas.insertRow(row)
-        idNameTr = 'row'.concat(row)
-        newTr.setAttribute('id', idNameTr)
-        for (var cel = 0; cel < width; cel++) {
-            var newTd = canvas.insertCell(cel)
-            idNameTd = 'cell'.concat(row, cel)
-            newTd.setAttribute('id', idNameTd)
+function changeColor(e) {
+    e.preventDefault() 
+    var color = document.getElementById('colorPicker').value
+    if (e.target.nodeName === 'TD') {
+        e.target.bgColor = color
+    }
 }
 
-*/
+document.getElementById('submitButton').addEventListener('click', setGrid, false);
+document.getElementById('pixelCanvas').addEventListener('click', changeColor, false);
 
+/*
+document.querySelector('#content').addEventListener('click', function (evt) {
+    if (evt.target.nodeName === 'SPAN') {  // ← verifies target is desired element
+        console.log('A span was clicked with text ' + evt.target.textContent);
+    }
+});
+*/
